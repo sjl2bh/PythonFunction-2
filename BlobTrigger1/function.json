@@ -6,7 +6,7 @@
       "type": "blobTrigger",
       "direction": "in",
       "path": "nlpinputs/{name}",
-      "connection": "nlpproofofconcept_STORAGE"
+      "connection": "AzureWebJobsStorage"
     }
   ]
 }

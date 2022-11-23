@@ -8,7 +8,7 @@ import logging
 
 import azure.functions as func
 
-from azure.storage.blob import BlobServiceClient, ContainerClient
+from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient
 
 import pandas as pd
 
@@ -34,8 +34,10 @@ def main(myblob: func.InputStream):
     BLOBNAME= DefineBlobName(myblob.name)
 
     #download from blob
-    blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
-    container_client = blob_service_client_instance.get_container_client(container= "nlpinputs") 
+    nlpinputs_Storage=os.environ["nlpinputsStorage"]
+
+    service_client = BlobServiceClient.from_connection_string(conn_str=nlpinputs_Storage)
+    container_client = service_client.get_container_client(container=CONTAINERNAME) 
     blob_client = container_client.get_blob_client(BLOBNAME)
    
 
