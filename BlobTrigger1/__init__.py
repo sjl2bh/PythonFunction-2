@@ -46,8 +46,11 @@ def main(myblob: func.InputStream):
         blob.write(stream.readall())
         blob.close()
 
-    
-    # dataframe_blobdata = pd.ExcelFile("BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx")
+    file_name = "BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx"
+    xl_workbook = pd.ExcelFile(file_name)
+    xl_workbook = pd.ExcelFile(file_name)  # Load the excel workbook
+    input_df = xl_workbook.parse("DataSheet")  # Parse the sheet into a dataframe
+    print(input_df)
     # file_name = open(LOCALFILENAME,'r', encoding='utf-8')
     # print(type(file_name))
     # print(file_name)
@@ -56,3 +59,4 @@ def main(myblob: func.InputStream):
     # print(input_df)    
     # #t2=time.time()
     # #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
+    
