@@ -37,8 +37,20 @@ def main(myblob: func.InputStream):
     blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
     container_client = blob_service_client_instance.get_container_client(container= "nlpinputs") 
     blob_client = container_client.get_blob_client(BLOBNAME)
+   
 
     with open(file="BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx", mode="wb") as blob:
         stream = blob_client.download_blob()
         blob.write(stream.readall())
         blob.close()
+
+    
+    # dataframe_blobdata = pd.ExcelFile("BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx")
+    # file_name = open(LOCALFILENAME,'r', encoding='utf-8')
+    # print(type(file_name))
+    # print(file_name)
+    # xl_workbook = pd.ExcelFile(file_name)
+    # input_df = xl_workbook.parse("DataSheet")  # Parse the sheet into a dataframe
+    # print(input_df)    
+    # #t2=time.time()
+    # #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
