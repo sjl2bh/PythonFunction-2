@@ -20,7 +20,7 @@ import string
 
 from BlobTrigger1.NLPConfigFile import*
 from BlobTrigger1.ListsOfWordsToBeCleaned import*
-from BlobTrigger1.FirstDataCleaning import*
+from BlobTrigger1.FirstDataCleaning import Create_Data_Clean
 
 
 def main(myblob: func.InputStream):
@@ -53,4 +53,5 @@ def main(myblob: func.InputStream):
         blob.close()
 
 
+    data_clean = Create_Data_Clean()
     print(data_clean)
