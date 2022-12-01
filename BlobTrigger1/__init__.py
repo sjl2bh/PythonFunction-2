@@ -18,6 +18,9 @@ import re
 
 import string
 
+from BlobTrigger1.NLPConfigFile import*
+from BlobTrigger1.ListsOfWordsToBeCleaned import*
+from BlobTrigger1.FirstDataCleaning import*
 
 
 def main(myblob: func.InputStream):
@@ -49,9 +52,5 @@ def main(myblob: func.InputStream):
         blob.write(stream.readall())
         blob.close()
 
-from BlobTrigger1.NLPConfigFile import*
-from BlobTrigger1.ListsOfWordsToBeCleaned import*
-#from BlobTrigger1.FirstDataCleaning import*
-from BlobTrigger1.FirstDataCleaning import data_clean
 
-print(data_clean)
+    print(data_clean)
