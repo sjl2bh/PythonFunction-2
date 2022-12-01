@@ -8,11 +8,16 @@ import logging
 
 import azure.functions as func
 
-from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient
+from azure.storage.blob import BlobServiceClient, ContainerClient
 
 import pandas as pd
 
 import openpyxl
+
+import re
+
+import string
+
 
 
 def main(myblob: func.InputStream):
@@ -34,10 +39,8 @@ def main(myblob: func.InputStream):
     BLOBNAME= DefineBlobName(myblob.name)
 
     #download from blob
-    nlpinputs_Storage=os.environ["nlpinputsStorage"]
-
-    service_client = BlobServiceClient.from_connection_string(conn_str=nlpinputs_Storage)
-    container_client = service_client.get_container_client(container=CONTAINERNAME) 
+    blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
+    container_client = blob_service_client_instance.get_container_client(container= "nlpinputs") 
     blob_client = container_client.get_blob_client(BLOBNAME)
    
 
@@ -46,17 +49,9 @@ def main(myblob: func.InputStream):
         blob.write(stream.readall())
         blob.close()
 
-    file_name = "BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx"
-    xl_workbook = pd.ExcelFile(file_name)
-    xl_workbook = pd.ExcelFile(file_name)  # Load the excel workbook
-    input_df = xl_workbook.parse("DataSheet")  # Parse the sheet into a dataframe
-    print(input_df)
-    # file_name = open(LOCALFILENAME,'r', encoding='utf-8')
-    # print(type(file_name))
-    # print(file_name)
-    # xl_workbook = pd.ExcelFile(file_name)
-    # input_df = xl_workbook.parse("DataSheet")  # Parse the sheet into a dataframe
-    # print(input_df)    
-    # #t2=time.time()
-    # #print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
-    
+from BlobTrigger1.NLPConfigFile import*
+from BlobTrigger1.ListsOfWordsToBeCleaned import*
+#from BlobTrigger1.FirstDataCleaning import*
+from BlobTrigger1.FirstDataCleaning import data_clean
+
+print(data_clean)
