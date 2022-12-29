@@ -18,7 +18,7 @@ Filter_Comments_Out_Tax_Pro_Account_Config_Variable = 0
 
 #SecondExploratoryDataAnalysis variables
 Show_Word_Cloud_Plot_config_variable = 1 #determines if the word cloud will be shown. If this is on, you will have to close the plot before the program will continue
-Show_Bar_Plot_config_variable = 0 #determines if the bar plot of topics will be shown. If this is on, you will have to close the plot before the program will continue
+Show_Bar_Plot_config_variable = 1 #determines if the bar plot of topics will be shown. If this is on, you will have to close the plot before the program will continue
 
 #ThirdSentimentAnalysis variables
 Show_Sentiment_Analysis_Plot_config_variable = 0

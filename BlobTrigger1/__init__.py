@@ -21,6 +21,7 @@ import string
 from BlobTrigger1.NLPConfigFile import*
 from BlobTrigger1.ListsOfWordsToBeCleaned import*
 from BlobTrigger1.FirstDataCleaning import Create_Data_Clean
+from BlobTrigger1.SecondExploratoryDataAnalysis import Create_Exploratory_Data_Analysis
 
 
 def main(myblob: func.InputStream):
@@ -53,5 +54,9 @@ def main(myblob: func.InputStream):
         blob.close()
 
 
-    data_clean = Create_Data_Clean()
+    data_clean, data_dtm, input_df = Create_Data_Clean()
+    print("SHOULD ONLY PRINT ONCE")
     print(data_clean)
+
+
+    Create_Exploratory_Data_Analysis(data_dtm, data_clean)

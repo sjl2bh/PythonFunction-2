@@ -1,0 +1,25 @@
+########Emulator settings
+
+{
+  
+  "IsEncrypted": false,  
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "nlpproofofconcept": "DefaultEndpointsProtocol=https;AccountName=nlpproofofconcept;AccountKey=PoBJOICvm9I34RO5bzYum0+404s+CvpfJO+aQ54hgvkxHFrHZMSd7qEphkQqVZlaT3IIbK6RR0dZ+ASt0OWrNw==;EndpointSuffix=core.windows.net"
+  },
+  "ConnectionStrings": {}
+}
+
+
+######non emulator settings
+{
+  
+    "IsEncrypted": false,  
+    "Values": {
+      "FUNCTIONS_WORKER_RUNTIME": "python",
+      "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=nlpproofofconcept;AccountKey=PoBJOICvm9I34RO5bzYum0+404s+CvpfJO+aQ54hgvkxHFrHZMSd7qEphkQqVZlaT3IIbK6RR0dZ+ASt0OWrNw==;EndpointSuffix=core.windows.net",
+      "nlpproofofconcept": "DefaultEndpointsProtocol=https;AccountName=nlpproofofconcept;AccountKey=PoBJOICvm9I34RO5bzYum0+404s+CvpfJO+aQ54hgvkxHFrHZMSd7qEphkQqVZlaT3IIbK6RR0dZ+ASt0OWrNw==;EndpointSuffix=core.windows.net"
+    },
+    "ConnectionStrings": {}
+  }

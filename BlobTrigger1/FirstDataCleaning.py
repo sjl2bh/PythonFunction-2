@@ -7,9 +7,13 @@ import re
 
 import string
 
+from sklearn.feature_extraction.text import CountVectorizer  # Must install in conda using "conda install -c conda-forge scikit-learn"
+
 
 from BlobTrigger1.NLPConfigFile import*
 from BlobTrigger1.ListsOfWordsToBeCleaned import*
+
+
 
 def Create_Data_Clean():
     file_name = "BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx"
@@ -111,5 +115,20 @@ def Create_Data_Clean():
     #print(data_clean)
     #########THIS LINE COMPLETES THE FINAL CORPUS
 
+    # We are going to create a document-term matrix using CountVectorizer, and exclude common English stop words
+    cv = CountVectorizer(stop_words='english')
+    data_cv = cv.fit_transform(data_clean.RESPONSES)
+    data_dtm_temporary = pd.DataFrame(data_cv.toarray(), columns=cv.get_feature_names_out())
+    data_dtm_temporary.index = data_clean.index
+    data_dtm = data_dtm_temporary  # this line is necessary for the variable to be imported properly to other files
+    #print(data_dtm)
+    # This will take a long time
+    # data_dtm.to_excel("C:\\Users\\617626\\Desktop\\IRS\\NLP survey project\\Non-Code\\CheckFileForProject.xlsx")
+
+    # All Data is now cleared of numbers, words that contain numbers, nonsenseical text, stop words, punctuation, brackets and we have both a corpus and a document term matrix
+    # acronymns like ctc, irs, ect. have been left in for topic modelling
+
+
+    
     print("First Data Cleaning Happened")
-    return data_clean
+    return data_clean, data_dtm, input_df
