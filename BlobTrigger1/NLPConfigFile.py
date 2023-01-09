@@ -21,10 +21,11 @@ Show_Word_Cloud_Plot_config_variable = 1 #determines if the word cloud will be s
 Show_Bar_Plot_config_variable = 1 #determines if the bar plot of topics will be shown. If this is on, you will have to close the plot before the program will continue
 
 #ThirdSentimentAnalysis variables
-Show_Sentiment_Analysis_Plot_config_variable = 0
+Show_Sentiment_Analysis_Plot_config_variable = 1
 
 #FourthTopicModeling variables
 Topics_Count_config_variable = 25 # How many topics would you like your data sorted into
+Enable_Optimization = 0
 
 
 #remove all comments containing nouns

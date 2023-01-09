@@ -7,7 +7,8 @@ from BlobTrigger1.NLPConfigFile import*
 
 def Create_Exploratory_Data_Analysis(data_dtm, data_clean):
     data = data_dtm  # variable "data" will be our document term matrix of type pandas.core.frame.DataFrame
-
+    data_for_wordcloud = data_clean
+    
     ############THESE VARIABLES NEED ATTENTION BEFORE EVERY RUN
     Topics = ['CTC', 'Levy']  # should probably move this to the top
     Acronyms_And_Meaningful_Words = ['ctc', 'child', 'credit',
@@ -17,7 +18,7 @@ def Create_Exploratory_Data_Analysis(data_dtm, data_clean):
     wc = WordCloud(background_color="white", colormap="Dark2",
                 max_font_size=150, random_state=42)
     # read column of data_clean RESPONSES to a string variable called text_for_word_cloud
-    text_for_word_cloud = data_clean["RESPONSES"]
+    text_for_word_cloud = data_for_wordcloud["RESPONSES"]
     # generate a wordcloud based on the text string of all responses
     wc.generate(str(text_for_word_cloud))
     # show the wordcloud using matplotlib

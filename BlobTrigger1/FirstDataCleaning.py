@@ -16,7 +16,7 @@ from BlobTrigger1.ListsOfWordsToBeCleaned import*
 
 
 def Create_Data_Clean():
-    file_name = "BlobTrigger1\\Data_Holder_Folder\\FileyTheFile.xlsx"
+    file_name = "BlobTrigger1\\Data_Holder_Folder\\TemporaryDataFile.xlsx"
     xl_workbook = pd.ExcelFile(file_name) # Load the excel workbook
     input_df = xl_workbook.parse("DataSheet")  # Parse the sheet into a dataframe
     print(input_df)
@@ -108,7 +108,7 @@ def Create_Data_Clean():
         topic modelling is not affected by the nonsense word "nan"'''
         text = str(text)
         if text == "nan":
-                text = ""
+            text = ""
         return text
     Remove_nan_Comments = lambda x: remove_comments_containing_nan(x)
     data_clean = pd.DataFrame(data_clean.RESPONSES.apply(Remove_nan_Comments))
